@@ -3,15 +3,13 @@
 <head>
     <meta name="layout" content="mainCup"/>
     <title>Welcome to Grails</title>
-    <asset:javascript src="user/home.js"/>
+    <asset:javascript src="cn/edu/cup/appmanager/home.js"></asset:javascript>
 </head>
+
 <body>
-<div id="appTabsDiv" class="easyui-tabs">
-    <div title="当前应用列表..." id="appsRunningDiv">
-        <div id="listAppsRunningDiv"></div>
-        <div id="paginationListAppsRunningDiv" class="easyui-pagination"></div>
-    </div>
-</div>
+<div id="ipDiv" class="easyui-panel"></div>
+
+<div id="appRolesDiv" class="easyui-tabs"></div>
 
 </body>
 </html>
