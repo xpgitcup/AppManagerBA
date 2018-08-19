@@ -4,17 +4,6 @@ import cn.edu.cup.AppRoles
 
 class Operation4UserAppController {
 
-    def liseAppRolles() {
-        def roles = AppRoles.list()
-        def result = [roles: roles]
-        println("${roles}")
-        if (request.xhr) {
-            render(template: "showAppRoles", model: result)
-        } else {
-            result
-        }
-    }
-
     def getClientIP() {
         /*
         * 获取客户端的IP
@@ -40,5 +29,9 @@ class Operation4UserAppController {
         }
     }
 
-    def index() { }
+    def index() {
+        println("start at operation4UserApp...")
+        def roles = AppRoles.list()
+        def result = [roles: roles]
+    }
 }

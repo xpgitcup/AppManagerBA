@@ -7,9 +7,6 @@
 </head>
 
 <body>
-<div id="ipDiv" class="easyui-panel"></div>
-
-<div id="appRolesDiv" class="easyui-tabs"></div>
 
 </body>
 </html>

@@ -17,12 +17,5 @@
 <div>
     ${roles}
 </div>
-<g:each in="${roles}" var="role" status="i">
-    <div title="${role}" id="appsDiv${role}">
-        <div id="listAppsDiv${role}"></div>
-
-        <div id="paginationListAppsDiv${role}" class="easyui-pagination"></div>
-    </div>
-</g:each>
 </body>
 </html>
