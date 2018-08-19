@@ -2,8 +2,16 @@ $(function() {
     console.info("程序启动...");
     //显示IP
     showClientIP();
-    //显示
-    showAppRoles();
+    //var roles = $("#rolesDiv").text().split(',')
+    var tempString = $("#rolesDiv").text();
+    var tempA = tempString.replace("[","");
+    var tempB = tempA.replace("]","");
+    var roles = tempB.split(",");
+    console.info(roles);
+    console.info(typeof(roles));
+
+    tabPagesManager("appTabsDiv", roles);
+
 });
 
 
@@ -12,7 +20,3 @@ function showClientIP() {
     ajaxRun("operation4UserApp/getClientIP", 0, "ipDiv")
 }
 
-function showAppRoles() {
-    console.info("显示程序分类...");
-    ajaxRun("operation4UserApp/liseAppRolles", 0, "appRolesDiv")
-}

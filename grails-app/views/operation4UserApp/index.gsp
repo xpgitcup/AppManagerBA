@@ -14,6 +14,7 @@
 </head>
 
 <body>
+<div id="rolesDiv">${roles}</div>
 <div id="ipDiv" class="easyui-panel"></div>
 
 <div id="appRolesDiv" class="easyui-tabs">
