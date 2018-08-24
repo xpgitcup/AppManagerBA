@@ -186,7 +186,7 @@ function tabDisplaySettings(tabName, counter, lister) {
         displayMsg: '',
         layout: ['first', 'prev', 'links', 'next', 'last'],
         //翻页函数
-        onSelectPage: function (pageNumber, pageSize) {
+        onSelectPage: function (pageNumber, pageSize, tabName) {
             listFunction(pageNumber, pageSize);
             $.cookie("currentPgae" + tabName, pageNumber);
         }

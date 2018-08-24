@@ -9,6 +9,6 @@ class AppRoles {
     }
     
     String toString() {
-        return "${name}(${appRight})"
+        return "${name}"
     }
 }

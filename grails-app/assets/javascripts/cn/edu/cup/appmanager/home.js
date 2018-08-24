@@ -11,6 +11,7 @@ $(function() {
     console.info(typeof(roles));
 
     tabPagesManager("appTabsDiv", roles);
+    tabDisplaySettings("paginationListAppsRunningDiv", "operation4UserApp/countAppsRunning", "listAppsRunning")
 
 });
 
@@ -20,3 +21,7 @@ function showClientIP() {
     ajaxRun("operation4UserApp/getClientIP", 0, "ipDiv")
 }
 
+function listAppsRunning(pageNumber, pageSize) {
+    console.info("正在运行的程序...");
+    ajaxRun("operation4UserApp/getAppsRunning", 0, "appsRunningDiv");
+}
