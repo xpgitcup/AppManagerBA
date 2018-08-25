@@ -1,8 +1,28 @@
 package cn.edu.cup.operation
 
 import cn.edu.cup.AppRoles
+import cn.edu.cup.UserApp
+import grails.converters.JSON
 
 class Operation4UserAppController {
+
+    def countUserApp() {
+        def count = 0
+        if (params.title) {
+            def role = AppRoles.findByName(params.title)
+            count = UserApp.countByAppRoles(role)
+        } else {
+            count = UserApp.count()
+        }
+        def result = [count: count]
+        println("${result}")
+
+        if (request.xhr) {
+            render result as JSON
+        } else {
+            result
+        }
+    }
 
     def getClientIP() {
         /*

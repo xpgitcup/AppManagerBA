@@ -2,8 +2,6 @@
  * Created by LiXiaoping on 2017/1/12.
  */
 
-var pageSize = 10
-
 /*
 * 对象数组查找
 * */
@@ -140,57 +138,5 @@ function ajaxRun(url, id, divId) {
             }
         });
     }
-}
-
-/*
-* 通用的tab页管理函数
-* */
-
-function tabPagesManager(tabsName, tabNameList) {
-    var defaultTab = tabNameList[0];
-    var currentTab = readCookie("current" + tabsName, defaultTab);
-    var tabsDiv = $("#" + tabsName);
-
-    tabsDiv.tabs("select", currentTab);
-
-    tabsDiv.tabs({
-            onSelect: function (title, index) {
-                console.info(tabsName + "--选择标签：" + title + "--" + index);
-                $.cookie("current" + tabsName, title, {path: '/'});
-            }
-        }
-    );
-
-}
-
-/*
-* 通用标签页显示程序
-* */
-function tabDisplaySettings(tabName, counter, lister) {
-    var tabDiv = $("#" + tabName);
-    console.info(tabDiv);
-
-    var listFunction = eval(lister);
-    console.info("传入的参数：" + lister);
-    console.info(listFunction);
-
-    var currentPage = readCookie("currentPage" + tabName, 1);
-    var pageSize = readCookie("pageSize" +  tabName, pageSize);
-    var totalCount = ajaxCalculate(counter)
-
-    //分页
-    tabDiv.pagination({
-        pageSize: pageSize,
-        total: totalCount,
-        showPageList: true,
-        displayMsg: '',
-        layout: ['first', 'prev', 'links', 'next', 'last'],
-        //翻页函数
-        onSelectPage: function (pageNumber, pageSize, tabName) {
-            listFunction(pageNumber, pageSize);
-            $.cookie("currentPgae" + tabName, pageNumber);
-        }
-    });
-    tabDiv.pagination("select", currentPage);
 }
 

@@ -10,11 +10,19 @@ $(function() {
     console.info(roles);
     console.info(typeof(roles));
 
-    tabPagesManager("appTabsDiv", roles);
-    tabDisplaySettings("paginationListAppsRunningDiv", "operation4UserApp/countAppsRunning", "listAppsRunning")
+    tabPagesManager("appRolesDiv", roles, countFunction, listFunction, "paginationListAppsDiv");
 
 });
 
+function countFunction(title) {
+    var count = ajaxCalculate("operation4UserApp/countUserApp?title=" + title)
+    console.info("自定义统计函数：" + title + " " + count);
+    return count
+}
+
+function listFunction(title, page, pageSize) {
+    console.info("自定义列表函数：" + title + " 页码 " + page + "页大小" + pageSize);
+}
 
 function showClientIP() {
     console.info("客户端IP...");

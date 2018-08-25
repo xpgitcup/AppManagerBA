@@ -1,8 +1,5 @@
 package cn.edu.cup.common
 
-import org.springframework.transaction.annotation.Transactional
-
-@Transactional
 class CommonService {
 
     /*

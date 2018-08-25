@@ -33,6 +33,7 @@
 
     <!--用户自定义的-->
     <asset:javascript src="cn/edu/cup/common/common.js"/>
+    <asset:javascript src="cn/edu/cup/common/commonUI.js"/>
 
     <g:layoutHead/>
 </head>
