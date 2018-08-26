@@ -35,6 +35,9 @@ function tabPagesManager(tabsName, tabNameList, listFunction, countFunction, pag
         }
     );
 
+}
+
+/*
     //循环设置各个分页---这是设置
     for (var i = 0; i < tabNameList.length; i++) {
         var title = tabNameList[i].trim();
@@ -65,8 +68,7 @@ function tabPagesManager(tabsName, tabNameList, listFunction, countFunction, pag
 
     // 打开缺省的标签
     //tabsDiv.tabs("select", currentTab);
-
-}
+* */
 
 /*
 * 加载页面的数据

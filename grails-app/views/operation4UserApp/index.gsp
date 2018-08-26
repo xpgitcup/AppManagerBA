@@ -15,14 +15,25 @@
 
 <body>
 <div id="rolesDiv">${roles}</div>
+
 <div id="ipDiv" class="easyui-panel"></div>
 
 <div id="appRolesDiv" class="easyui-tabs">
-    <g:each in="${roles}" var="role" status="i">
-        <div title="${role}" id="appsDiv${role}">
-            <div id="listAppsDiv${role}"></div>
+    <g:each in="${tabList}" var="tab" status="i">
+        <div title="${tab.title}" id="appsDiv${tab.title}">
+            <div id="listAppsDiv${tab.title}"></div>
 
-            <div id="paginationListAppsDiv${role}" class="easyui-pagination"></div>
+            <div id="paginationListAppsDiv${tab.title}" class="easyui-pagination"
+                 data-options="total: ${tab.total},
+                pageSize: 10,
+                         onSelectPage: function (pageNumber, pageSize) {
+                         console.info('页码：' + pageNumber + '长度：' + pageSize);
+                         $(this).pagination('loading');
+                         var tt = '${tab.title}';
+                         loadData(tt, pageNumber, pageSize);
+                         $(this).pagination('loaded');}
+            ">
+            </div>
         </div>
     </g:each>
 </div>

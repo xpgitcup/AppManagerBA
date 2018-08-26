@@ -18,11 +18,16 @@ class Operation4UserAppController {
 
         def result = [userAppList: userAppList]
 
-        if (request.xhr) {
-            render(template: 'showUserApp', result)
-        } else {
-            result
+        def templateFile = "showUserApp"
+        if (params.view) {
+            templateFile = "${params.view}"
         }
+        if (request.xhr) {
+            render(template: templateFile, model:result)
+        } else {
+            respond result
+        }
+
     }
 
     def countUserApp() {
@@ -71,6 +76,16 @@ class Operation4UserAppController {
     def index() {
         println("start at operation4UserApp...")
         def roles = AppRoles.list()
-        def result = [roles: roles]
+        def tabList = []
+
+        roles.each { e->
+            def total = UserApp.countByAppRoles(e)
+            def tab = [:]
+            tab.title = "${e}"
+            tab.total = total
+            tabList.add(tab)
+        }
+
+        def result = [tabList: tabList, roles: roles]
     }
 }

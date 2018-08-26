@@ -2,7 +2,7 @@ $(function() {
     console.info("程序启动...");
     //显示IP
     showClientIP();
-    //var roles = $("#rolesDiv").text().split(',')
+
     var tempString = $("#rolesDiv").text();
     var tempA = tempString.replace("[","");
     var tempB = tempA.replace("]","");
@@ -13,6 +13,13 @@ $(function() {
     tabPagesManager("appRolesDiv", roles, countFunction, listFunction, "paginationListAppsDiv");
 
 });
+
+function loadData(title, page, pageSize) {
+    console.info("自定义列表函数：" + title + " 页码 " + page + "页大小" + pageSize);
+    var params = "?title=" + title +  getParams(page, pageSize)
+    console.info(params)
+    ajaxRun("operation4UserApp/listAppsRunning" + params, 0, "listAppsDiv" + title);
+}
 
 function countFunction(title) {
     var count = ajaxCalculate("operation4UserApp/countUserApp?title=" + title)
