@@ -6,6 +6,25 @@ import grails.converters.JSON
 
 class Operation4UserAppController {
 
+    def listAppsRunning() {
+        def userAppList = []
+
+        if (params.title) {
+            def role = AppRoles.findByName(params.title)
+            userAppList = UserApp.findAllByAppRoles(role, params)
+        } else {
+            userAppList = UserApp.list(params)
+        }
+
+        def result = [userAppList: userAppList]
+
+        if (request.xhr) {
+            render(template: 'showUserApp', result)
+        } else {
+            result
+        }
+    }
+
     def countUserApp() {
         def count = 0
         if (params.title) {
