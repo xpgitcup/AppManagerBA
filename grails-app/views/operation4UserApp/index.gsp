@@ -35,8 +35,8 @@
                          loadData(tt, pageNumber, pageSize);
                          $(this).pagination('loaded');
                      }
-               "
-            >
+
+               ">
             </div>
         </div>
     </g:each>

@@ -14,13 +14,11 @@ var pageSize = 10
 * 通用的tab页管理函数
 * */
 
-function tabPagesManager(tabsName, tabNameList, listFunction, countFunction, paginationDiv) {
+function tabPagesManager(tabsName, tabNameList, listFunction) {
     // 初始设置
     var defaultTab = tabNameList[0];
     var currentTab = readCookie("current" + tabsName, defaultTab);
     var tabsDiv = $("#" + tabsName);
-    var listFunction = eval(listFunction);
-    var countFunction = eval(countFunction);
 
     // 设置标签管理函数
     tabsDiv.tabs({
@@ -29,24 +27,24 @@ function tabPagesManager(tabsName, tabNameList, listFunction, countFunction, pag
                 console.info(tabsName + "--选择标签：" + title + "--" + index);
                 $.cookie("current" + tabsName, title, {path: '/'});
                 //------------------------------------------------------------------------------------------------------
-                var tabPagination = "paginationListAppsDiv" + title;
-                var tp = $("#" + tabPagination);
-                console.info("加载数据..." + tabPagination + tp);
-                tp.pagination('refresh');
+                loadFirstData(title, listFunction);
             }
         }
     );
 
     // 打开缺省的标签
     tabsDiv.tabs("select", currentTab);
-    loadFirstData(currentTab);
+    loadFirstData(currentTab, listFunction);
 }
 
-function loadFirstData(title) {
+function loadFirstData(title, listFunction) {
     var tabPagination = "paginationListAppsDiv" + title;
     var tp = $("#" + tabPagination);
     console.info("加载数据..." + tabPagination + tp);
     tp.pagination('refresh');
+    var page = readCookie("curregtPage" + title, 1);
+    var listFunction = eval(listFunction);
+    listFunction(title, page, pageSize);
 }
 
 /*
