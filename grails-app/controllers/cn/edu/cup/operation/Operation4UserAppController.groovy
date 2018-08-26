@@ -6,9 +6,10 @@ import grails.converters.JSON
 
 class Operation4UserAppController {
 
-    def listAppsRunning() {
+    def listAppsRunning(params) {
         def userAppList = []
 
+        println("${params}")
         if (params.title) {
             def role = AppRoles.findByName(params.title)
             userAppList = UserApp.findAllByAppRoles(role, params)
@@ -16,6 +17,7 @@ class Operation4UserAppController {
             userAppList = UserApp.list(params)
         }
 
+        println("${userAppList}")
         def result = [userAppList: userAppList]
 
         def templateFile = "showUserApp"

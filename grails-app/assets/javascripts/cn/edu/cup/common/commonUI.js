@@ -29,11 +29,14 @@ function tabPagesManager(tabsName, tabNameList, listFunction, countFunction, pag
                 console.info(tabsName + "--选择标签：" + title + "--" + index);
                 $.cookie("current" + tabsName, title, {path: '/'});
                 //------------------------------------------------------------------------------------------------------
-                //console.info("加载数据...");  //这个是不需要的
-                //loadTabPageDefaultData(title, listFunction, countFunction);
+                console.info("加载数据...");  //这个是不需要的
+                loadTabPageDefaultData(title, listFunction, countFunction);
             }
         }
     );
+
+    // 打开缺省的标签
+    tabsDiv.tabs("select", currentTab);
 
 }
 
@@ -66,8 +69,6 @@ function tabPagesManager(tabsName, tabNameList, listFunction, countFunction, pag
         });
     }
 
-    // 打开缺省的标签
-    //tabsDiv.tabs("select", currentTab);
 * */
 
 /*

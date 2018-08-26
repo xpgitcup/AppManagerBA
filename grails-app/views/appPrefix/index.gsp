@@ -20,7 +20,7 @@
             </g:if>
             <f:table collection="${appPrefixList}" />
 
-            <div class="pagination">
+            <div class="paginationGrails">
                 <g:paginate total="${appPrefixCount ?: 0}" />
             </div>
         </div>

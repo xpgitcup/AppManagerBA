@@ -20,7 +20,7 @@
             </g:if>
             <f:table collection="${tomcatInstanceList}" />
 
-            <div class="pagination">
+            <div class="paginationGrails">
                 <g:paginate total="${tomcatInstanceCount ?: 0}" />
             </div>
         </div>

@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<div id="rolesDiv">${roles}</div>
+<div id="rolesDiv" class="hidden">${roles}</div>
 
 <div id="ipDiv" class="easyui-panel"></div>
 
@@ -24,15 +24,19 @@
             <div id="listAppsDiv${tab.title}"></div>
 
             <div id="paginationListAppsDiv${tab.title}" class="easyui-pagination"
-                 data-options="total: ${tab.total},
-                pageSize: 10,
-                         onSelectPage: function (pageNumber, pageSize) {
+                 data-options="
+                 total: ${tab.total},
+                 pageSize: 10,
+                 onSelectPage:
+                     function (pageNumber, pageSize) {
                          console.info('页码：' + pageNumber + '长度：' + pageSize);
                          $(this).pagination('loading');
                          var tt = '${tab.title}';
                          loadData(tt, pageNumber, pageSize);
-                         $(this).pagination('loaded');}
-            ">
+                         $(this).pagination('loaded');
+                     }
+               "
+            >
             </div>
         </div>
     </g:each>

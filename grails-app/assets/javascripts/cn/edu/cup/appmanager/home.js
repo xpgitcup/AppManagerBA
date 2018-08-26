@@ -16,8 +16,8 @@ $(function() {
 
 function loadData(title, page, pageSize) {
     console.info("自定义列表函数：" + title + " 页码 " + page + "页大小" + pageSize);
-    var params = "?title=" + title +  getParams(page, pageSize)
-    console.info(params)
+    var params = getParams(page, pageSize) +  "&title=" + title;    //getParams必须是放在最最前面！！
+        console.info(params)
     ajaxRun("operation4UserApp/listAppsRunning" + params, 0, "listAppsDiv" + title);
 }
 
