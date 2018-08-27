@@ -1,10 +1,27 @@
 package cn.edu.cup.operation
 
 import cn.edu.cup.AppRoles
+import cn.edu.cup.TomcatInstance
 import cn.edu.cup.UserApp
 import grails.converters.JSON
 
 class Operation4UserAppController {
+
+    def scanWebApp() {
+        def systemApp = ["docs", "examples", ""]
+        def tomcatList = TomcatInstance.list()
+        tomcatList.each { e ->
+            def dir = new File(e.tomcatPath)
+            if (dir.exists()) {
+                dir.listFiles().each { item ->
+                    if (item.isDirectory()) {
+                        def name = item.name
+                    }
+                }
+            }
+        }
+        redirect(action: "index")
+    }
 
     def listAppsRunning(params) {
         def userAppList = []
@@ -25,7 +42,7 @@ class Operation4UserAppController {
             templateFile = "${params.view}"
         }
         if (request.xhr) {
-            render(template: templateFile, model:result)
+            render(template: templateFile, model: result)
         } else {
             respond result
         }
@@ -80,7 +97,7 @@ class Operation4UserAppController {
         def roles = AppRoles.list()
         def tabList = []
 
-        roles.each { e->
+        roles.each { e ->
             def total = UserApp.countByAppRoles(e)
             def tab = [:]
             tab.title = "${e}"

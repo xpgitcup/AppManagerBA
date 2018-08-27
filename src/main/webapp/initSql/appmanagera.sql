@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 10.1.16.50
-Source Server Version : 50627
-Source Host           : 10.1.16.50:3306
+Source Server         : sample
+Source Server Version : 50722
+Source Host           : localhost:3306
 Source Database       : appmanagera
 
 Target Server Type    : MYSQL
-Target Server Version : 50627
+Target Server Version : 50722
 File Encoding         : 65001
 
-Date: 2018-08-24 16:11:55
+Date: 2018-08-27 16:54:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -95,11 +95,12 @@ CREATE TABLE `tomcat_instance` (
   `tomcat_path` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_46jqs3nsxnhuuy9lnr9p0wh34` (`tomcat_path`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tomcat_instance
 -- ----------------------------
+INSERT INTO `tomcat_instance` VALUES ('1', '0', 'http://localhost:8080', 'D:\\apache-tomcat-9.0.10\\webapps');
 
 -- ----------------------------
 -- Table structure for `user_app`

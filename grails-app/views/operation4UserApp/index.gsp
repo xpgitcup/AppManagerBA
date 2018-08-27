@@ -16,7 +16,26 @@
 <body>
 <div id="rolesDiv" class="hidden">${roles}</div>
 
-<div id="ipDiv" class="easyui-panel"></div>
+<!--顶部按钮-->
+<div class="nav">
+    <ul>
+        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+        <li>
+            <g:link class="create" action="scanWebApp" controller="operation4UserApp">
+                刷新
+            </g:link>
+        </li>
+        <li>
+            <a class="edit" href="appRoles/index">程序类型编辑</a>
+        </li>
+        <li>
+            <a class="edit" href="tomcatInstance/index">Tomcat维护</a>
+        </li>
+        <li>
+            <div id="ipDiv"></div>
+        </li>
+    </ul>
+</div>
 
 <div id="appRolesDiv" class="easyui-tabs">
     <g:each in="${tabList}" var="tab" status="i">

@@ -16,6 +16,7 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
     <f:table collection="${userAppList}"/>
+
 </div>
 </body>
 </html>
