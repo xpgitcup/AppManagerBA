@@ -8,7 +8,7 @@ import grails.converters.JSON
 class Operation4UserAppController {
 
     def scanWebApp() {
-        def systemApp = ["docs", "examples", ""]
+        def systemApp = ["docs", "examples", "host-manager", "manager", "ROOT"]
         def tomcatList = TomcatInstance.list()
         tomcatList.each { e ->
             def dir = new File(e.tomcatPath)
@@ -16,6 +16,11 @@ class Operation4UserAppController {
                 dir.listFiles().each { item ->
                     if (item.isDirectory()) {
                         def name = item.name
+                        if (!systemApp.contains(name)) {
+                            println("${name}")
+                            //登记应用程序
+
+                        }
                     }
                 }
             }

@@ -7,12 +7,11 @@ class UserApp {
     Date     date
     AppRoles appRoles
 
-    static belongsTo = [appPrefix: AppPrefix]
+    static belongsTo = [tomcatInstance: TomcatInstance]
     
     static constraints = {
         appName()
         appPath()
-        appPrefix(nullable: true)
         date()
         appRoles(nullable: true)
     }
