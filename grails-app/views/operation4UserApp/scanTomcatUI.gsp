@@ -17,7 +17,7 @@
 <g:form controller="operation4UserApp" action="scanTomcat">
     <fieldset class="form">
         <label>请输入根目录：</label>
-        <g:textField name="rootPath" required="" value="/"/>
+        <g:textField name="rootPath" required="" value="d:/"/>
     </fieldset>
     <fieldset class="buttons">
         <g:submitButton class="save"  name="扫描" />

@@ -9,6 +9,18 @@ import grails.converters.JSON
 class Operation4UserAppController {
 
     def commonNetService
+    def tomcatInstanceService
+
+    def clearTomcat() {
+        def tlist = TomcatInstance.list()
+        if (tlist) {
+            tlist.each { e ->
+                println("${e}")
+                tomcatInstanceService.delete(e.id)
+            }
+        }
+        redirect(action: "index")
+    }
 
     def scanTomcat(params) {
         if (params.rootPath) {
@@ -27,10 +39,37 @@ class Operation4UserAppController {
                                     def v = ip.find("192.168.1.\\d+")
                                     println("ip:${v}")
                                     def w = ip.find("10.\\d+.\\d+.\\d+")
+                                    //解析服务器端口
+                                    //def conf = new File("${item.path}/conf/server.xml")
+                                    //def slurper= new XmlSlurper().parse(conf)
+                                    //println("${slurper}")
+                                    //println("----------------------------------------------------------------")
+                                    def server = new XmlParser().parse("${item.path}/conf/server.xml")
+                                    server.each { e ->
+                                        println("元素：${e}")
+                                        println("${e.name()} -- ${e.value()}")
+                                        //println("${e.attributes()}")
+                                    }
+                                    def service = server.find { e -> e.name() == "Service" }
+                                    println("服务器元素：${service}")
+                                    println("${service.attributes()}")
+                                    println("${service.value()}")
+                                    def connector = service.findAll() { e -> e.name() == "Connector" }
+                                    println("链接器：${connector}")
+                                    connector.each { e ->
+                                        println("${e}")
+                                        println("${e.name()}")
+                                        println("${e.attributes()}")
+                                    }
+                                    def mainConnector = connector.find() { e -> e.attributes().protocol == "HTTP/1.1" }
+                                    println("主链接器：${mainConnector}")
+                                    def mainPort = mainConnector.attributes().port
+                                    println("主端口：${mainPort}")
+                                    //登记tomcat
                                     def tomcat = new TomcatInstance(tomcatPath: item.path,
                                             wanIP: w,
                                             lanIP: v,
-                                            port: 8080
+                                            port: mainPort
                                     )
                                     tomcat.save(true)
                                     println("登记${item}")

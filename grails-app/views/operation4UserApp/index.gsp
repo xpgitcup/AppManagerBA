@@ -22,7 +22,7 @@
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
         <li>
             <g:link class="create" action="scanWebApp" controller="operation4UserApp">
-                刷新
+                应用程序扫描
             </g:link>
         </li>
         <li>
@@ -30,6 +30,9 @@
         </li>
         <li>
             <a class="edit" href="operation4UserApp/scanTomcatUI">Tomcat扫描</a>
+        </li>
+        <li>
+            <a class="edit" href="operation4UserApp/clearTomcat">Tomcat清理</a>
         </li>
         <li>
             <a class="edit" href="tomcatInstance/index">Tomcat维护</a>
