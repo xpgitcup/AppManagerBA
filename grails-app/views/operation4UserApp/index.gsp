@@ -29,6 +29,9 @@
             <a class="edit" href="appRoles/index">程序类型编辑</a>
         </li>
         <li>
+            <a class="edit" href="operation4UserApp/scanTomcatUI">Tomcat扫描</a>
+        </li>
+        <li>
             <a class="edit" href="tomcatInstance/index">Tomcat维护</a>
         </li>
         <li>

@@ -2,18 +2,18 @@ package cn.edu.cup
 
 class UserApp {
     
-    String   appPath
     String   appName
+    String   description
     Date     date
-    AppRoles appRoles
+    AppRole  appRole
 
     static belongsTo = [tomcatInstance: TomcatInstance]
     
     static constraints = {
         appName()
-        appPath()
+        description()
         date()
-        appRoles(nullable: true)
+        appRole(nullable: true)
     }
     
     static mapping = {

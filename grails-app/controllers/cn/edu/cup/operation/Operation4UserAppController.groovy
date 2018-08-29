@@ -1,11 +1,50 @@
 package cn.edu.cup.operation
 
-import cn.edu.cup.AppRoles
+
+import cn.edu.cup.AppRole
 import cn.edu.cup.TomcatInstance
 import cn.edu.cup.UserApp
 import grails.converters.JSON
 
 class Operation4UserAppController {
+
+    def commonNetService
+
+    def scanTomcat(params) {
+        if (params.rootPath) {
+            def file = new File(params.rootPath)
+            if (file.exists()) {
+                file.listFiles().each { item ->
+                    if (item.isDirectory()) {
+                        if (item.name.contains("apache-tomcat-")) {
+                            def bin = new File("${item.getAbsolutePath()}/bin")
+                            if (bin.exists()) {
+                                println("发现：${item}")
+                                if (!TomcatInstance.findByTomcatPath(item.path)) {
+                                    //获取本机的IP地址
+                                    def ip = commonNetService.getHostIp()
+                                    println(ip)
+                                    def v = ip.find("192.168.1.\\d+")
+                                    println("ip:${v}")
+                                    def w = ip.find("10.\\d+.\\d+.\\d+")
+                                    def tomcat = new TomcatInstance(tomcatPath: item.path,
+                                            wanIP: w,
+                                            lanIP: v,
+                                            port: 8080
+                                    )
+                                    tomcat.save(true)
+                                    println("登记${item}")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        redirect(controller: "tomcatInstance", action: "index")
+    }
+
+    def scanTomcatUI() {}
 
     def scanWebApp() {
         def systemApp = ["docs", "examples", "host-manager", "manager", "ROOT"]
@@ -33,7 +72,7 @@ class Operation4UserAppController {
 
         println("${params}")
         if (params.title) {
-            def role = AppRoles.findByName(params.title)
+            def role = AppRole.findByName(params.title)
             userAppList = UserApp.findAllByAppRoles(role, params)
         } else {
             userAppList = UserApp.list(params)
@@ -57,7 +96,7 @@ class Operation4UserAppController {
     def countUserApp() {
         def count = 0
         if (params.title) {
-            def role = AppRoles.findByName(params.title)
+            def role = AppRole.findByName(params.title)
             count = UserApp.countByAppRoles(role)
         } else {
             count = UserApp.count()
@@ -99,7 +138,7 @@ class Operation4UserAppController {
 
     def index() {
         println("start at operation4UserApp...")
-        def roles = AppRoles.list()
+        def roles = AppRole.list()
         def tabList = []
 
         roles.each { e ->

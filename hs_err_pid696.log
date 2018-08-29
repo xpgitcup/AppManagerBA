@@ -1,0 +1,282 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x0000000064eb00c0, pid=696, tid=0x0000000000000f40
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_181-b13) (build 1.8.0_181-b13)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.181-b13 mixed mode windows-amd64 compressed oops)
+# Problematic frame:
+# V  [jvm.dll+0xc00c0]
+#
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000000f1d800):  JavaThread "main" [_thread_in_vm, id=3904, stack(0x0000000002920000,0x0000000002a20000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x00000000c0006634
+
+Registers:
+RAX=0x00003f71dcfed421, RBX=0x0000000000000000, RCX=0x0000000002a1c1e0, RDX=0x00000000c0006598
+RSP=0x0000000002a1c040, RBP=0x0000000027fbcf20, RSI=0x0000000002e97168, RDI=0x0000000000000027
+R8 =0x0000000002e97168, R9 =0x0000000000000027, R10=0x0000000002a1c369, R11=0x0000000002a1c3b8
+R12=0x0000000002a1c2f8, R13=0x0000000000000000, R14=0x0000000002a1c270, R15=0x0000000000f1d800
+RIP=0x0000000064eb00c0, EFLAGS=0x0000000000010206
+
+Top of Stack: (sp=0x0000000002a1c040)
+0x0000000002a1c040:   0000000002e97ba8 000000000406c552
+0x0000000002a1c050:   0000000002e2eb00 0000000000000000
+0x0000000002a1c060:   0000000000000000 0000000064e259c5
+0x0000000002a1c070:   000000000406c552 00007ff8062f0428
+0x0000000002a1c080:   00000007c0009a20 0000000064e6dbbd
+0x0000000002a1c090:   0000000000000000 0000000064e47ab3
+0x0000000002a1c0a0:   0000000000000001 00000000650077ad
+0x0000000002a1c0b0:   000000000000000c 0000000064ef9f40
+0x0000000002a1c0c0:   0000000c254f9400 000000000000000c
+0x0000000002a1c0d0:   0000000028b2b4b0 000000006500e362
+0x0000000002a1c0e0:   0000000000f1d800 0000000000000000
+0x0000000002a1c0f0:   0000000000000000 0000000064e259c5
+0x0000000002a1c100:   0000000028b0a390 0000000000000001
+0x0000000002a1c110:   0000000717461a20 0000000000000000
+0x0000000002a1c120:   0000000002a1c260 000000000306bd1c
+0x0000000002a1c130:   0000000000f1d800 0000000025aa1228 
+
+Instructions: (pc=0x0000000064eb00c0)
+0x0000000064eb00a0:   48 89 54 24 10 53 57 48 81 ec 48 01 00 00 48 8b
+0x0000000064eb00b0:   05 cb 17 73 00 48 33 c4 48 89 84 24 10 01 00 00
+0x0000000064eb00c0:   8b 82 9c 00 00 00 48 8b 9c 24 90 01 00 00 48 8b
+0x0000000064eb00d0:   f9 c1 e8 09 48 89 5c 24 38 c6 44 24 30 00 a8 01 
+
+
+Register to memory mapping:
+
+RAX=0x00003f71dcfed421 is an unknown value
+RBX=0x0000000000000000 is an unknown value
+RCX=0x0000000002a1c1e0 is pointing into the stack for thread: 0x0000000000f1d800
+RDX=0x00000000c0006598 is an unknown value
+RSP=0x0000000002a1c040 is pointing into the stack for thread: 0x0000000000f1d800
+RBP=0x0000000027fbcf20 is an unknown value
+RSI=0x0000000002e97168 is an unknown value
+RDI=0x0000000000000027 is an unknown value
+R8 =0x0000000002e97168 is an unknown value
+R9 =0x0000000000000027 is an unknown value
+R10=0x0000000002a1c369 is pointing into the stack for thread: 0x0000000000f1d800
+R11=0x0000000002a1c3b8 is pointing into the stack for thread: 0x0000000000f1d800
+R12=0x0000000002a1c2f8 is pointing into the stack for thread: 0x0000000000f1d800
+R13=0x0000000000000000 is an unknown value
+R14=0x0000000002a1c270 is pointing into the stack for thread: 0x0000000000f1d800
+R15=0x0000000000f1d800 is a thread
+
+
+Stack: [0x0000000002920000,0x0000000002a20000],  sp=0x0000000002a1c040,  free space=1008k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0xc00c0]
+V  [jvm.dll+0xc15d4]
+V  [jvm.dll+0x216530]
+V  [jvm.dll+0x2167be]
+V  [jvm.dll+0xf2ef4]
+C  0x000000000000008d
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  java.lang.Class.getDeclaredConstructors0(Z)[Ljava/lang/reflect/Constructor;+0
+j  java.lang.Class.privateGetDeclaredConstructors(Z)[Ljava/lang/reflect/Constructor;+58
+j  java.lang.Class.getConstructor0([Ljava/lang/Class;I)Ljava/lang/reflect/Constructor;+10
+j  java.lang.Class.newInstance()Ljava/lang/Object;+46
+j  sun.reflect.MethodAccessorGenerator$1.run()Lsun/reflect/MagicAccessorImpl;+24
+j  sun.reflect.MethodAccessorGenerator$1.run()Ljava/lang/Object;+1
+v  ~StubRoutines::call_stub
+j  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedAction;)Ljava/lang/Object;+0
+j  sun.reflect.MethodAccessorGenerator.generate(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;Ljava/lang/Class;[Ljava/lang/Class;IZZLjava/lang/Class;)Lsun/reflect/MagicAccessorImpl;+755
+j  sun.reflect.MethodAccessorGenerator.generateMethod(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;Ljava/lang/Class;[Ljava/lang/Class;I)Lsun/reflect/MethodAccessor;+13
+j  sun.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+79
+j  sun.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+56
+j  org.codehaus.groovy.reflection.CachedMethod.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6
+j  groovy.lang.MetaMethod.doMethodInvoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+9
+j  org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Object;ZZ)Ljava/lang/Object;+225
+j  groovy.lang.MetaClassImpl.invokeMethod(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Object;+10
+j  org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+18
+j  org.codehaus.groovy.runtime.callsite.BooleanReturningMethodInvoker.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Z+11
+j  org.codehaus.groovy.runtime.callsite.BooleanClosureWrapper.call([Ljava/lang/Object;)Z+9
+j  org.codehaus.groovy.runtime.callsite.BooleanClosureWrapper.callForMap(Ljava/util/Map$Entry;)Z+31
+j  org.codehaus.groovy.runtime.DefaultGroovyMethods.findAll(Ljava/util/Map;Lgroovy/lang/Closure;)Ljava/util/Map;+52
+j  grails.util.Metadata.afterLoading()V+23
+j  grails.util.Metadata.loadFromDefault()V+245
+j  grails.util.Metadata.<init>()V+31
+j  grails.util.Metadata.getCurrent()Lgrails/util/Metadata;+22
+j  grails.util.Environment.resolveCurrentEnvironment()Lgrails/util/Environment;+11
+j  grails.util.Environment.cacheCurrentEnvironment()Lgrails/util/Environment;+0
+j  grails.util.Environment.getCurrent()Lgrails/util/Environment;+38
+j  grails.util.Environment.<clinit>()V+192
+v  ~StubRoutines::call_stub
+j  org.grails.build.parsing.CommandLineParser.<clinit>()V+29
+v  ~StubRoutines::call_stub
+j  org.grails.cli.GrailsCli.<init>()V+32
+j  org.grails.cli.GrailsCli.main([Ljava/lang/String;)V+71
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0000000027ea6800 JavaThread "Service Thread" daemon [_thread_blocked, id=3424, stack(0x0000000028780000,0x0000000028880000)]
+  0x0000000027e19000 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=15772, stack(0x0000000028680000,0x0000000028780000)]
+  0x0000000027e18800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=4024, stack(0x0000000028580000,0x0000000028680000)]
+  0x0000000027e0c800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=8820, stack(0x0000000028480000,0x0000000028580000)]
+  0x0000000027e0b000 JavaThread "Attach Listener" daemon [_thread_blocked, id=16824, stack(0x0000000028380000,0x0000000028480000)]
+  0x0000000027db8800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=6004, stack(0x0000000028280000,0x0000000028380000)]
+  0x0000000027da0800 JavaThread "Finalizer" daemon [_thread_blocked, id=12892, stack(0x0000000028180000,0x0000000028280000)]
+  0x0000000025e9d000 JavaThread "Reference Handler" daemon [_thread_blocked, id=16728, stack(0x0000000027c80000,0x0000000027d80000)]
+=>0x0000000000f1d800 JavaThread "main" [_thread_in_vm, id=3904, stack(0x0000000002920000,0x0000000002a20000)]
+
+Other Threads:
+  0x0000000025e99000 VMThread [stack: 0x0000000027b80000,0x0000000027c80000] [id=17336]
+  0x0000000027ebd800 WatcherThread [stack: 0x0000000028880000,0x0000000028980000] [id=5472]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000000000f1c830] SystemDictionary_lock - owner thread: 0x0000000000f1d800
+
+Heap:
+ PSYoungGen      total 152576K, used 21008K [0x0000000716100000, 0x0000000720b00000, 0x00000007c0000000)
+  eden space 131072K, 16% used [0x0000000716100000,0x00000007175840b8,0x000000071e100000)
+  from space 21504K, 0% used [0x000000071f600000,0x000000071f600000,0x0000000720b00000)
+  to   space 21504K, 0% used [0x000000071e100000,0x000000071e100000,0x000000071f600000)
+ ParOldGen       total 348160K, used 0K [0x00000005c2200000, 0x00000005d7600000, 0x0000000716100000)
+  object space 348160K, 0% used [0x00000005c2200000,0x00000005c2200000,0x00000005d7600000)
+ Metaspace       used 6744K, capacity 6906K, committed 7040K, reserved 1056768K
+  class space    used 771K, capacity 817K, committed 896K, reserved 1048576K
+
+Card table byte_map: [0x00000000122a0000,0x0000000013290000] byte_map_base: 0x000000000f48f000
+
+Marking Bits: (ParMarkBitMap*) 0x0000000065612d00
+ Begin Bits: [0x0000000014530000, 0x000000001c4a8000)
+ End Bits:   [0x000000001c4a8000, 0x0000000024420000)
+
+Polling page: 0x0000000000ef0000
+
+CodeCache: size=245760Kb used=1977Kb max_used=1977Kb free=243782Kb
+ bounds [0x0000000002ee0000, 0x0000000003150000, 0x0000000011ee0000]
+ total_blobs=846 nmethods=581 adapters=178
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 0.310 Thread 0x0000000027e19000 nmethod 573 0x00000000030c4ad0 code [0x00000000030c4d00, 0x00000000030c58e8]
+Event: 0.311 Thread 0x0000000027e19000  574   !   1       java.lang.reflect.Executable::sharedToGenericString (329 bytes)
+Event: 0.312 Thread 0x0000000027e19000 nmethod 574 0x00000000030c6590 code [0x00000000030c6940, 0x00000000030c8078]
+Event: 0.312 Thread 0x0000000027e19000  575       1       java.lang.reflect.Executable::printModifiersIfNonzero (101 bytes)
+Event: 0.313 Thread 0x0000000027e19000 nmethod 575 0x00000000030ca090 code [0x00000000030ca2c0, 0x00000000030cab98]
+Event: 0.313 Thread 0x0000000027e19000  576       1       java.lang.reflect.Modifier::toString (202 bytes)
+Event: 0.313 Thread 0x0000000027e19000 nmethod 576 0x00000000030cb950 code [0x00000000030cbb60, 0x00000000030cc0f8]
+Event: 0.313 Thread 0x0000000027e19000  577       1       java.lang.reflect.Method::specificToGenericStringHeader (48 bytes)
+Event: 0.314 Thread 0x0000000027e19000 nmethod 577 0x00000000030cc450 code [0x00000000030cc660, 0x00000000030cce68]
+Event: 0.314 Thread 0x0000000027e19000  578       1       java.lang.reflect.Method::getGenericExceptionTypes (5 bytes)
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 0.307 Thread 0x0000000000f1d800 Exception <a 'java/lang/ClassNotFoundException': grails/util/MetadataCustomizer> (0x00000007173b1b08) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u181\11358\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 210]
+Event: 0.307 Thread 0x0000000000f1d800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000007173b7f30) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u181\11358\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.307 Thread 0x0000000000f1d800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000007173ba788) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u181\11358\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.307 Thread 0x0000000000f1d800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000007173bc8f0) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u181\11358\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.307 Thread 0x0000000000f1d800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000007173bf200) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u181\11358\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.308 Thread 0x0000000000f1d800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x00000007173c3858) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u181\11358\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.311 Thread 0x0000000000f1d800 Exception <a 'java/lang/ClassNotFoundException': java/lang/StringBeanInfo> (0x0000000717423480) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u181\11358\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 210]
+Event: 0.311 Thread 0x0000000000f1d800 Exception <a 'java/lang/ClassNotFoundException': java/lang/StringCustomizer> (0x00000007174278d0) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u181\11358\hotspot\src\share\vm\classfile\systemDictionary.cpp, line 210]
+Event: 0.311 Thread 0x0000000000f1d800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000071742e5e0) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u181\11358\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+Event: 0.311 Thread 0x0000000000f1d800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException'> (0x000000071743e5b8) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u181\11358\hotspot\src\share\vm\runtime\sharedRuntime.cpp, line 605]
+
+Events (10 events):
+Event: 0.313 loading class sun/reflect/Label
+Event: 0.313 loading class sun/reflect/Label done
+Event: 0.313 loading class sun/reflect/Label$PatchInfo
+Event: 0.313 loading class sun/reflect/Label$PatchInfo done
+Event: 0.314 loading class sun/reflect/MethodAccessorGenerator$1
+Event: 0.314 loading class sun/reflect/MethodAccessorGenerator$1 done
+Event: 0.314 loading class sun/reflect/ClassDefiner
+Event: 0.314 loading class sun/reflect/ClassDefiner done
+Event: 0.314 loading class sun/reflect/ClassDefiner$1
+Event: 0.314 loading class sun/reflect/ClassDefiner$1 done
+
+
+Dynamic libraries:
+0x00007ff735040000 - 0x00007ff735077000 	C:\Java\jdk1.8.0_181\bin\java.exe
+0x00007ff8062e0000 - 0x00007ff8064c1000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ff8050e0000 - 0x00007ff805192000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ff802a40000 - 0x00007ff802cb3000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ff805c70000 - 0x00007ff805d11000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ff805bd0000 - 0x00007ff805c6e000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ff803770000 - 0x00007ff8037cb000 	C:\WINDOWS\System32\sechost.dll
+0x00007ff805200000 - 0x00007ff805324000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ff8037d0000 - 0x00007ff803960000 	C:\WINDOWS\System32\USER32.dll
+0x00007ff803700000 - 0x00007ff803720000 	C:\WINDOWS\System32\win32u.dll
+0x00007ff805d80000 - 0x00007ff805da8000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ff8026b0000 - 0x00007ff802842000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ff802d70000 - 0x00007ff802e0f000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ff802e10000 - 0x00007ff802f0a000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffff8a20000 - 0x00007ffff8c89000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17134.165_none_fb429645306569ac\COMCTL32.dll
+0x00007ff805e50000 - 0x00007ff806173000 	C:\WINDOWS\System32\combase.dll
+0x00007ff802f70000 - 0x00007ff802fea000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ff805a70000 - 0x00007ff805a9d000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ff802580000 - 0x00007ff8025ee000 	C:\WINDOWS\System32\dtrampo.dll
+0x00000000656d0000 - 0x00000000657a2000 	C:\Java\jdk1.8.0_181\jre\bin\msvcr100.dll
+0x0000000064df0000 - 0x0000000065692000 	C:\Java\jdk1.8.0_181\jre\bin\server\jvm.dll
+0x00007ff805e40000 - 0x00007ff805e48000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffffeff0000 - 0x00007ffffeff9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ff805db0000 - 0x00007ff805e1c000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ff800110000 - 0x00007ff800133000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffffd830000 - 0x00007ffffd83a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ff8000e0000 - 0x00007ff80010a000 	C:\WINDOWS\SYSTEM32\WINMMBASE.dll
+0x0000000000ea0000 - 0x0000000000ee9000 	C:\WINDOWS\System32\cfgmgr32.dll
+0x0000000064de0000 - 0x0000000064def000 	C:\Java\jdk1.8.0_181\jre\bin\verify.dll
+0x0000000064db0000 - 0x0000000064dd9000 	C:\Java\jdk1.8.0_181\jre\bin\java.dll
+0x0000000064d90000 - 0x0000000064da6000 	C:\Java\jdk1.8.0_181\jre\bin\zip.dll
+0x00007ff803bf0000 - 0x00007ff805030000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007ff806200000 - 0x00007ff8062a9000 	C:\WINDOWS\System32\shcore.dll
+0x00007ff802ff0000 - 0x00007ff8036fd000 	C:\WINDOWS\System32\windows.storage.dll
+0x00007ff805b70000 - 0x00007ff805bc1000 	C:\WINDOWS\System32\shlwapi.dll
+0x00007ff802650000 - 0x00007ff802661000 	C:\WINDOWS\System32\kernel.appcore.dll
+0x00007ff802690000 - 0x00007ff8026af000 	C:\WINDOWS\System32\profapi.dll
+0x00007ff8025f0000 - 0x00007ff80263c000 	C:\WINDOWS\System32\powrprof.dll
+0x00007ff802640000 - 0x00007ff80264a000 	C:\WINDOWS\System32\FLTLIB.DLL
+0x00007ffff8f00000 - 0x00007ffff90c9000 	C:\WINDOWS\SYSTEM32\dbghelp.dll
+
+VM Arguments:
+jvm_args: -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -XX:CICompilerCount=3 -Djline.WindowsTerminal.directConsole=false -Dfile.encoding=UTF-8 
+java_command: org.grails.cli.GrailsCli run-app --plain-output
+java_class_path (initial): C:\Users\LiXiaoping\AppData\Local\Temp\classpath1235523529.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Java\jdk1.8.0_172
+PATH=C:\Program Files\Python37\Scripts\;C:\Program Files\Python37\;C:\gurobi801\win64\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\OpenVPN\bin;D:\Tools\DevelopingTools\apache-maven-3.5.3\bin;D:\Tools\DevelopingTools\gradle-4.8\bin;D:\Tools\DevelopingTools\spring-2.0.3.RELEASE\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\LiXiaoping\AppData\Local\Microsoft\WindowsApps;C:\texlive\2018\bin\win32;
+USERNAME=LiXiaoping
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 60 Stepping 3, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 17134 (10.0.17134.1)
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 60 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2
+
+Memory: 4k page, physical 33409068k(25371200k free), swap 38389804k(27988128k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.181-b13) for windows-amd64 JRE (1.8.0_181-b13), built on Jul  7 2018 04:01:33 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Wed Aug 29 09:17:25 2018
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

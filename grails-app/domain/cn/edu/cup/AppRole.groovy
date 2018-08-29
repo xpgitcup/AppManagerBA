@@ -1,6 +1,6 @@
 package cn.edu.cup
 
-class AppRoles {
+class AppRole {
     
     String name
     Integer appRight

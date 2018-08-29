@@ -2,17 +2,17 @@ package cn.edu.cup
 
 import grails.gorm.services.Service
 
-@Service(AppRoles)
+@Service(AppRole)
 interface AppRolesService {
 
-    AppRoles get(Serializable id)
+    AppRole get(Serializable id)
 
-    List<AppRoles> list(Map args)
+    List<AppRole> list(Map args)
 
     Long count()
 
     void delete(Serializable id)
 
-    AppRoles save(AppRoles appRoles)
+    AppRole save(AppRole appRoles)
 
 }

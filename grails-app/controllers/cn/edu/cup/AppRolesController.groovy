@@ -19,10 +19,10 @@ class AppRolesController {
     }
 
     def create() {
-        respond new AppRoles(params)
+        respond new AppRole(params)
     }
 
-    def save(AppRoles appRoles) {
+    def save(AppRole appRoles) {
         if (appRoles == null) {
             notFound()
             return
@@ -37,7 +37,7 @@ class AppRolesController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'appRoles.label', default: 'AppRoles'), appRoles.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'appRoles.label', default: 'AppRole'), appRoles.id])
                 redirect appRoles
             }
             '*' { respond appRoles, [status: CREATED] }
@@ -48,7 +48,7 @@ class AppRolesController {
         respond appRolesService.get(id)
     }
 
-    def update(AppRoles appRoles) {
+    def update(AppRole appRoles) {
         if (appRoles == null) {
             notFound()
             return
@@ -63,7 +63,7 @@ class AppRolesController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'appRoles.label', default: 'AppRoles'), appRoles.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'appRoles.label', default: 'AppRole'), appRoles.id])
                 redirect appRoles
             }
             '*'{ respond appRoles, [status: OK] }
@@ -80,7 +80,7 @@ class AppRolesController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'appRoles.label', default: 'AppRoles'), id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'appRoles.label', default: 'AppRole'), id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -90,7 +90,7 @@ class AppRolesController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'appRoles.label', default: 'AppRoles'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'appRoles.label', default: 'AppRole'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
