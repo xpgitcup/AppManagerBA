@@ -3,7 +3,7 @@ package cn.edu.cup
 import grails.gorm.services.Service
 
 @Service(AppRole)
-interface AppRolesService {
+interface AppRoleService {
 
     AppRole get(Serializable id)
 
@@ -13,6 +13,6 @@ interface AppRolesService {
 
     void delete(Serializable id)
 
-    AppRole save(AppRole appRoles)
+    AppRole save(AppRole appRole)
 
 }

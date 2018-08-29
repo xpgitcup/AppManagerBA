@@ -11,7 +11,7 @@ class UserApp {
     
     static constraints = {
         appName()
-        description()
+        description(nullable: true)
         date()
         appRole(nullable: true)
     }

@@ -3,70 +3,70 @@ package cn.edu.cup
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
-class AppRolesController {
+class AppRoleController {
 
-    AppRolesService appRolesService
+    AppRoleService appRoleService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond appRolesService.list(params), model:[appRolesCount: appRolesService.count()]
+        respond appRoleService.list(params), model:[appRoleCount: appRoleService.count()]
     }
 
     def show(Long id) {
-        respond appRolesService.get(id)
+        respond appRoleService.get(id)
     }
 
     def create() {
         respond new AppRole(params)
     }
 
-    def save(AppRole appRoles) {
-        if (appRoles == null) {
+    def save(AppRole appRole) {
+        if (appRole == null) {
             notFound()
             return
         }
 
         try {
-            appRolesService.save(appRoles)
+            appRoleService.save(appRole)
         } catch (ValidationException e) {
-            respond appRoles.errors, view:'create'
+            respond appRole.errors, view:'create'
             return
         }
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'appRoles.label', default: 'AppRole'), appRoles.id])
-                redirect appRoles
+                flash.message = message(code: 'default.created.message', args: [message(code: 'appRole.label', default: 'AppRole'), appRole.id])
+                redirect appRole
             }
-            '*' { respond appRoles, [status: CREATED] }
+            '*' { respond appRole, [status: CREATED] }
         }
     }
 
     def edit(Long id) {
-        respond appRolesService.get(id)
+        respond appRoleService.get(id)
     }
 
-    def update(AppRole appRoles) {
-        if (appRoles == null) {
+    def update(AppRole appRole) {
+        if (appRole == null) {
             notFound()
             return
         }
 
         try {
-            appRolesService.save(appRoles)
+            appRoleService.save(appRole)
         } catch (ValidationException e) {
-            respond appRoles.errors, view:'edit'
+            respond appRole.errors, view:'edit'
             return
         }
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'appRoles.label', default: 'AppRole'), appRoles.id])
-                redirect appRoles
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'appRole.label', default: 'AppRole'), appRole.id])
+                redirect appRole
             }
-            '*'{ respond appRoles, [status: OK] }
+            '*'{ respond appRole, [status: OK] }
         }
     }
 
@@ -76,11 +76,11 @@ class AppRolesController {
             return
         }
 
-        appRolesService.delete(id)
+        appRoleService.delete(id)
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'appRoles.label', default: 'AppRole'), id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'appRole.label', default: 'AppRole'), id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -90,7 +90,7 @@ class AppRolesController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'appRoles.label', default: 'AppRole'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'appRole.label', default: 'AppRole'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

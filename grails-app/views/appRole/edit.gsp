@@ -2,11 +2,11 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'appRoles.label', default: 'AppRole')}" />
+        <g:set var="entityName" value="${message(code: 'appRole.label', default: 'AppRole')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#edit-appRoles" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+        <a href="#edit-appRole" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
@@ -14,22 +14,22 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="edit-appRoles" class="content scaffold-edit" role="main">
+        <div id="edit-appRole" class="content scaffold-edit" role="main">
             <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${this.appRoles}">
+            <g:hasErrors bean="${this.appRole}">
             <ul class="errors" role="alert">
-                <g:eachError bean="${this.appRoles}" var="error">
+                <g:eachError bean="${this.appRole}" var="error">
                 <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.appRoles}" method="PUT">
-                <g:hiddenField name="version" value="${this.appRoles?.version}" />
+            <g:form resource="${this.appRole}" method="PUT">
+                <g:hiddenField name="version" value="${this.appRole?.version}" />
                 <fieldset class="form">
-                    <f:all bean="appRoles"/>
+                    <f:all bean="appRole"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

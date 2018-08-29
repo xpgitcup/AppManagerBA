@@ -1,5 +1,7 @@
 package appmanagerba
 
+import cn.edu.cup.AppRole
+
 class BootStrap {
 
     def initService
@@ -7,6 +9,7 @@ class BootStrap {
     def init = { servletContext ->
         environments {
             development {
+                initRole()
                 configureForDevelopment(servletContext);
             }
             production {
@@ -16,6 +19,19 @@ class BootStrap {
     }
 
     def destroy = {
+    }
+
+    /*
+    * 初始化用户程序类型
+    * */
+    def initRole() {
+        if (AppRole.count<1) {
+            println "AppRole"
+            def appRole = new AppRole(name: '一般程序', appRight: '0')
+            appRole.save()
+            def bppRole = new AppRole(name: '用户程序', appRight: '1')
+            bppRole.save()
+        }
     }
 
     /**

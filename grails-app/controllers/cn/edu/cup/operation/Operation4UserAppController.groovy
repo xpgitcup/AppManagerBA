@@ -10,13 +10,26 @@ class Operation4UserAppController {
 
     def commonNetService
     def tomcatInstanceService
+    def userAppService
+
+    def clearUserApp() {
+        def tlist = cn.edu.cup.UserApp.list()
+        if (tlist) {
+            tlist.each { e ->
+                userAppService.delete(e.id)
+            }
+        }
+        redirect(action: "index")
+    }
 
     def clearTomcat() {
         def tlist = TomcatInstance.list()
         if (tlist) {
             tlist.each { e ->
                 println("${e}")
-                tomcatInstanceService.delete(e.id)
+                if (e.userApp.size() < 1) {
+                    tomcatInstanceService.delete(e.id)
+                }
             }
         }
         redirect(action: "index")
@@ -88,8 +101,9 @@ class Operation4UserAppController {
     def scanWebApp() {
         def systemApp = ["docs", "examples", "host-manager", "manager", "ROOT"]
         def tomcatList = TomcatInstance.list()
+        def role = AppRole.findByName("一般程序")
         tomcatList.each { e ->
-            def dir = new File(e.tomcatPath)
+            def dir = new File("${e.tomcatPath}/webapps")
             if (dir.exists()) {
                 dir.listFiles().each { item ->
                     if (item.isDirectory()) {
@@ -97,7 +111,14 @@ class Operation4UserAppController {
                         if (!systemApp.contains(name)) {
                             println("${name}")
                             //登记应用程序
-
+                            def userApp = new UserApp(
+                                    appName: name,
+                                    description: name,
+                                    date: item.lastModified(),
+                                    appRole: role,
+                                    tomcatInstance: e
+                            )
+                            userAppService.save(userApp)
                         }
                     }
                 }
@@ -112,7 +133,7 @@ class Operation4UserAppController {
         println("${params}")
         if (params.title) {
             def role = AppRole.findByName(params.title)
-            userAppList = UserApp.findAllByAppRoles(role, params)
+            userAppList = UserApp.findAllByAppRole(role, params)
         } else {
             userAppList = UserApp.list(params)
         }
@@ -181,7 +202,7 @@ class Operation4UserAppController {
         def tabList = []
 
         roles.each { e ->
-            def total = UserApp.countByAppRoles(e)
+            def total = UserApp.countByAppRole(e)
             def tab = [:]
             tab.title = "${e}"
             tab.total = total
