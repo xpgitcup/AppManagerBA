@@ -109,16 +109,18 @@ class Operation4UserAppController {
                     if (item.isDirectory()) {
                         def name = item.name
                         if (!systemApp.contains(name)) {
-                            println("${name}")
-                            //登记应用程序
-                            def userApp = new UserApp(
-                                    appName: name,
-                                    description: name,
-                                    date: item.lastModified(),
-                                    appRole: role,
-                                    tomcatInstance: e
-                            )
-                            userAppService.save(userApp)
+                            if (!UserApp.findByAppName(name)) {
+                                println("${name}")
+                                //登记应用程序
+                                def userApp = new UserApp(
+                                        appName: name,
+                                        description: name,
+                                        date: item.lastModified(),
+                                        appRole: role,
+                                        tomcatInstance: e
+                                )
+                                userAppService.save(userApp)
+                            }
                         }
                     }
                 }
