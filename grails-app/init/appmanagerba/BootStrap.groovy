@@ -9,6 +9,9 @@ class BootStrap {
     def init = { servletContext ->
         environments {
             development {
+                //
+                def file = new File(".")
+                println("我在这!${file.absolutePath}")
                 initRole()
                 configureForDevelopment(servletContext);
             }

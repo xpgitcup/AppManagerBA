@@ -17,7 +17,11 @@
 <g:form controller="operation4UserApp" action="scanTomcat">
     <fieldset class="form">
         <label>请输入根目录：</label>
-        <g:textField name="rootPath" required="" value="d:/"/>
+        <g:textField name="rootPath" required="" value="/home/usr/share/"/>
+    </fieldset>
+    <fieldset class="form">
+        <label>路由器地址：</label>
+        <g:textField name="routeIP" required="" value="10.1.16.50"/>
     </fieldset>
     <fieldset class="buttons">
         <g:submitButton class="save"  name="扫描" />

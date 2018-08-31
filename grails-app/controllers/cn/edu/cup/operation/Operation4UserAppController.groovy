@@ -12,6 +12,27 @@ class Operation4UserAppController {
     def tomcatInstanceService
     def userAppService
 
+    /*
+    * 数据库中删除已经卸载的用户程序
+    * */
+
+    def checkApplication() {
+        def appList = UserApp.list()
+        appList.each { e ->
+            def fn = "${e.tomcatInstance.tomcatPath}/webapps/${e.appName}"
+            def appFile = new File(fn)
+            if (!appFile.exists()) {
+                userAppService.delete(e.id)
+            }
+        }
+
+        redirect(action: "index")
+    }
+
+    /*
+    * 全部删除用户的程序
+    * */
+
     def clearUserApp() {
         def tlist = cn.edu.cup.UserApp.list()
         if (tlist) {
@@ -21,6 +42,10 @@ class Operation4UserAppController {
         }
         redirect(action: "index")
     }
+
+    /*
+    * 全部删除登记的Tomcat
+    * */
 
     def clearTomcat() {
         def tlist = TomcatInstance.list()
@@ -34,6 +59,10 @@ class Operation4UserAppController {
         }
         redirect(action: "index")
     }
+
+    /*
+    *  搜索Tomcat实例
+    * */
 
     def scanTomcat(params) {
         if (params.rootPath) {
@@ -50,8 +79,12 @@ class Operation4UserAppController {
                                     def ip = commonNetService.getHostIp()
                                     println(ip)
                                     def v = ip.find("192.168.1.\\d+")
-                                    println("ip:${v}")
+                                    println("局域网：ip:${v}")
                                     def w = ip.find("10.\\d+.\\d+.\\d+")
+                                    if (!w) {
+                                        w = params.routeIP
+                                    }
+                                    println("广域网：ip:${w}")
                                     //解析服务器端口
                                     //def conf = new File("${item.path}/conf/server.xml")
                                     //def slurper= new XmlSlurper().parse(conf)
@@ -84,7 +117,8 @@ class Operation4UserAppController {
                                             lanIP: v,
                                             port: mainPort
                                     )
-                                    tomcat.save(true)
+                                    //tomcat.save(true)
+                                    tomcatInstanceService.save(tomcat)
                                     println("登记${item}")
                                 }
                             }
@@ -97,6 +131,10 @@ class Operation4UserAppController {
     }
 
     def scanTomcatUI() {}
+
+    /*
+    *  搜索用户程序
+    * */
 
     def scanWebApp() {
         def systemApp = ["docs", "examples", "host-manager", "manager", "ROOT"]
@@ -129,6 +167,10 @@ class Operation4UserAppController {
         redirect(action: "index")
     }
 
+    /*
+    * 显示正在运行的用户程序...
+    * */
+
     def listAppsRunning(params) {
         def userAppList = []
 
@@ -155,6 +197,10 @@ class Operation4UserAppController {
 
     }
 
+    /*
+    *  统计用户程序数量
+    * */
+
     def countUserApp() {
         def count = 0
         if (params.title) {
@@ -172,6 +218,10 @@ class Operation4UserAppController {
             result
         }
     }
+
+    /*
+    * 获取客户端IP
+    * */
 
     def getClientIP() {
         /*
@@ -197,6 +247,10 @@ class Operation4UserAppController {
             result
         }
     }
+
+    /*
+    * 程序的起点
+    * */
 
     def index() {
         println("start at operation4UserApp...")
